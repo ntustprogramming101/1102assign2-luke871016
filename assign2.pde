@@ -1,26 +1,21 @@
 final int GAME_START = 0;
 final int GAME_RUN = 1;
 final int GAME_LOSE = 2;
-
 final int HOG_IDLE = 0;
 final int HOG_LEFT = 1;
 final int HOG_RIGHT = 2;
 final int HOG_DOWN = 3;
-
 int soldierLayer,robotLayer;
 PVector soldierPosition,cabbagePosition,groundhogPosition;
-
 PImage titleImg,bgImg,gameoverImg,soilImg;
 PImage cabbageImg,lifeImg;
 PImage soldierImg;
 PImage groundhogIdleImg,groundhogDownImg,groundhogLeftImg,groundhogRightImg;
 PImage startNormalImg,startHoveredImg,restartNormalImg,restartHoveredImg;
-
 int gameState = GAME_START;
 int lifeCount = 2;
-int movingFrame = 16;
+int movingFrame = 15;
 int groundhogState = HOG_IDLE;
-
 boolean movingDetection;
 void setup() {
   // canva setting
@@ -93,14 +88,14 @@ void draw() {
       // soil
       image(soilImg,0,160);
       // groundhog moving detection
-      if(movingFrame==16){
+      if(movingFrame==15){
         movingDetection = false;
         groundhogState = HOG_IDLE;
       }else{
         movingDetection = true;
       }
       // groundhog move
-      if(movingFrame < 16){
+      if(movingFrame < 15){
         switch(groundhogState){
           case HOG_LEFT:
             movingFrame += 1;
@@ -108,7 +103,7 @@ void draw() {
             break;
           case HOG_DOWN:
             movingFrame += 1;
-            groundhogPosition.y+=80/15;
+            groundhogPosition.y+=80/15.0;
             break;
           case HOG_RIGHT:
             movingFrame += 1;
@@ -137,7 +132,7 @@ void draw() {
          groundhogPosition.y < soldierPosition.y + 80 &&
          groundhogPosition.y + 80 > soldierPosition.y){
         groundhogPosition = new PVector(80*5,80);
-        movingFrame = 16;
+        movingFrame = 15;
         lifeCount --;
         if(lifeCount == 0){
           gameState = GAME_LOSE;
@@ -210,7 +205,7 @@ void keyPressed(){
     //debug
       lifeCount = 5;
       groundhogPosition = new PVector(80*5,80);
-      movingFrame = 16;
+      movingFrame = 15;
       break;
   }
 }
