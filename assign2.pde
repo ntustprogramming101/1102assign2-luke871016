@@ -144,23 +144,6 @@ void draw() {
           break;
         }
       }
-      // collide debug
-        //if(mouseX < soldierPosition.x+80 &&
-        //   mouseX + 80 > soldierPosition.x &&
-        //   mouseY < soldierPosition.y + 80 &&
-        //   mouseY + 80 > soldierPosition.y){
-        //  fill(255,0,0);
-        //  rect(mouseX,mouseY,80,80);
-        //  noFill();
-        //  stroke(0);
-        //  rect(soldierPosition.x,soldierPosition.y,80,80);
-        //}else{
-        //  fill(0,255,0);
-        //  rect(mouseX,mouseY,80,80);
-        //  noFill();
-        //  stroke(0);
-        //  rect(soldierPosition.x,soldierPosition.y,80,80);
-        //}
       // soldier
       soldierPosition.x += 4;
       if(soldierPosition.x >= width){
