@@ -27,21 +27,21 @@ void setup() {
   size(640, 480);
   frameRate(60);
   // loadImage
-  titleImg = loadImage("IMG/title.jpg");
-  bgImg = loadImage("IMG/bg.jpg");
-  gameoverImg = loadImage("IMG/gameover.jpg");
-  soilImg = loadImage("IMG/soil.png");
-  cabbageImg = loadImage("IMG/cabbage.png");
-  lifeImg = loadImage("IMG/life.png");
-  soldierImg = loadImage("IMG/soldier.png");
-  groundhogIdleImg = loadImage("IMG/groundhogIdle.png");
-  groundhogDownImg = loadImage("IMG/groundhogDown.png");
-  groundhogLeftImg = loadImage("IMG/groundhogLeft.png");
-  groundhogRightImg = loadImage("IMG/groundhogRight.png");
-  startNormalImg = loadImage("IMG/startNormal.png");
-  startHoveredImg = loadImage("IMG/startHovered.png");
-  restartNormalImg = loadImage("IMG/restartNormal.png");
-  restartHoveredImg = loadImage("IMG/restartHovered.png");
+  titleImg = loadImage("img/title.jpg");
+  bgImg = loadImage("img/bg.jpg");
+  gameoverImg = loadImage("img/gameover.jpg");
+  soilImg = loadImage("img/soil.png");
+  cabbageImg = loadImage("img/cabbage.png");
+  lifeImg = loadImage("img/life.png");
+  soldierImg = loadImage("img/soldier.png");
+  groundhogIdleImg = loadImage("img/groundhogIdle.png");
+  groundhogDownImg = loadImage("img/groundhogDown.png");
+  groundhogLeftImg = loadImage("img/groundhogLeft.png");
+  groundhogRightImg = loadImage("img/groundhogRight.png");
+  startNormalImg = loadImage("img/startNormal.png");
+  startHoveredImg = loadImage("img/startHovered.png");
+  restartNormalImg = loadImage("img/restartNormal.png");
+  restartHoveredImg = loadImage("img/restartHovered.png");
   
   // soldier layer and position
   soldierLayer = int(random(0,4));
