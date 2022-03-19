@@ -104,7 +104,7 @@ void draw() {
         switch(groundhogState){
           case HOG_LEFT:
             movingFrame += 1;
-            groundhogPosition.x-=80/15;
+            groundhogPosition.x-=80/15.0;
             break;
           case HOG_DOWN:
             movingFrame += 1;
@@ -112,7 +112,7 @@ void draw() {
             break;
           case HOG_RIGHT:
             movingFrame += 1;
-            groundhogPosition.x+=80/15;
+            groundhogPosition.x+=80/15.0;
             break;
         }
       }
