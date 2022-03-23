@@ -52,7 +52,6 @@ void setup() {
 }
 
 void draw() {
-  println(groundhogPosition.x);
   // Switch Game State
   switch(gameState){
     case GAME_START:
