@@ -19,7 +19,7 @@ int groundhogState = HOG_IDLE;
 boolean movingDetection;
 void setup() {
   // canva setting
-  size(640, 480);
+  size(640, 480, P2D);
   frameRate(60);
   // loadImage
   titleImg = loadImage("img/title.jpg");
