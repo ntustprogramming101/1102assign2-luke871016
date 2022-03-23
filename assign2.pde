@@ -88,6 +88,15 @@ void draw() {
       rect(0,145,width,15);
       // soil
       image(soilImg,0,160);
+      // groundhog moving detection
+      if(movingFrame==15){
+        movingDetection = false;
+        groundhogState = HOG_IDLE;
+        groundhogPosition.x = round(groundhogPosition.x);
+        groundhogPosition.y = round(groundhogPosition.y);
+      }else{
+        movingDetection = true;
+      }
       // groundhog move
       if(movingFrame < 15){
         switch(groundhogState){
