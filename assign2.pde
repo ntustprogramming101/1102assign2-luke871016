@@ -19,7 +19,7 @@ int groundhogState = HOG_IDLE;
 boolean movingDetection;
 void setup() {
   // canva setting
-  size(640, 480, P2D);
+  size(640, 480);
   frameRate(60);
   // loadImage
   titleImg = loadImage("img/title.jpg");
@@ -40,18 +40,19 @@ void setup() {
   
   // soldier layer and position
   soldierLayer = int(random(0,4));
-  soldierPosition = new PVector(random(width),160.0+soldierLayer*80.0);
+  soldierPosition = new PVector(random(width),160+soldierLayer*80);
   
   // groundhog position
-  groundhogPosition = new PVector(80.0*5,80.0);
+  groundhogPosition = new PVector(80*5,80);
   
   // cabbage position
   int cabbageIndexX = int(random(0,8));
   int cabbageIndexY = int(random(0,4));
-  cabbagePosition = new PVector(cabbageIndexX * 80.0 , 160.0 + cabbageIndexY * 80.0);
+  cabbagePosition = new PVector(cabbageIndexX * 80 , 160 + cabbageIndexY * 80);
 }
 
 void draw() {
+  println(groundhogPosition.x);
   // Switch Game State
   switch(gameState){
     case GAME_START:
@@ -93,17 +94,41 @@ void draw() {
           case HOG_LEFT:
             movingFrame += 1;
             groundhogPosition.x-=80.0/15.0;
-            movingDetection();
+            // groundhog moving detection
+            if(movingFrame==15){
+              movingDetection = false;
+              groundhogState = HOG_IDLE;
+              groundhogPosition.x = round(groundhogPosition.x);
+              groundhogPosition.y = round(groundhogPosition.y);
+            }else{
+              movingDetection = true;
+            }
             break;
           case HOG_DOWN:
             movingFrame += 1;
             groundhogPosition.y+=80.0/15.0;
-            movingDetection();
+            // groundhog moving detection
+            if(movingFrame==15){
+              movingDetection = false;
+              groundhogState = HOG_IDLE;
+              groundhogPosition.x = round(groundhogPosition.x);
+              groundhogPosition.y = round(groundhogPosition.y);
+            }else{
+              movingDetection = true;
+            }
             break;
           case HOG_RIGHT:
             movingFrame += 1;
             groundhogPosition.x+=80.0/15.0;
-            movingDetection();
+            // groundhog moving detection
+            if(movingFrame==15){
+              movingDetection = false;
+              groundhogState = HOG_IDLE;
+              groundhogPosition.x = round(groundhogPosition.x);
+              groundhogPosition.y = round(groundhogPosition.y);
+            }else{
+              movingDetection = true;
+            }
             break;
         }
       }
@@ -123,14 +148,11 @@ void draw() {
           break;
       }
       // soldier&groundhog collide detection
-      if(groundhogPosition.x < soldierPosition.x+80.0 &&
-         groundhogPosition.x + 80.0 > soldierPosition.x &&
-         groundhogPosition.y < soldierPosition.y + 80.0 &&
-         groundhogPosition.y + 80.0 > soldierPosition.y){
+      if(groundhogPosition.x < soldierPosition.x+80 &&
+         groundhogPosition.x + 80 > soldierPosition.x &&
+         groundhogPosition.y < soldierPosition.y + 80 &&
+         groundhogPosition.y + 80 > soldierPosition.y){
         groundhogPosition = new PVector(80*5,80);
-        groundhogPosition = new PVector(80*5,80);
-        movingDetection = false;
-        groundhogState = HOG_IDLE;
         movingFrame = 15;
         lifeCount --;
         if(lifeCount == 0){
@@ -141,14 +163,14 @@ void draw() {
       // soldier
       soldierPosition.x += 4;
       if(soldierPosition.x >= width){
-        soldierPosition.x = -80.0;
+        soldierPosition.x = -80;
       }
       image(soldierImg,soldierPosition.x,soldierPosition.y);
       // cabbage&groundhog collide detection
-      if(groundhogPosition.x < cabbagePosition.x+80.0 &&
-         groundhogPosition.x + 80.0 > cabbagePosition.x &&
-         groundhogPosition.y < cabbagePosition.y + 80.0 &&
-         groundhogPosition.y + 80.0 > cabbagePosition.y){
+      if(groundhogPosition.x < cabbagePosition.x+80 &&
+         groundhogPosition.x + 80 > cabbagePosition.x &&
+         groundhogPosition.y < cabbagePosition.y + 80 &&
+         groundhogPosition.y + 80 > cabbagePosition.y){
         cabbagePosition = new PVector(-80,-80);
         lifeCount ++;
       }
@@ -168,8 +190,6 @@ void draw() {
           gameState = GAME_RUN;
           // groundhog position
           groundhogPosition = new PVector(80*5,80);
-          movingDetection = false;
-          groundhogState = HOG_IDLE;
           // cabbage position
           int cabbageIndexX = int(random(0,8));
           int cabbageIndexY = int(random(0,4));
@@ -205,20 +225,8 @@ void keyPressed(){
     case SHIFT:
     //debug
       lifeCount = 5;
-      groundhogPosition = new PVector(80.0*5,80.0);
+      groundhogPosition = new PVector(80*5,80);
       movingFrame = 15;
       break;
-  }
-}
-
-void movingDetection(){
-  // groundhog moving detection
-  if(movingFrame>=15){
-    groundhogPosition.x = round(groundhogPosition.x);
-    groundhogPosition.y = round(groundhogPosition.y);
-    movingDetection = false;
-    groundhogState = HOG_IDLE;
-  }else{
-    movingDetection = true;
   }
 }
