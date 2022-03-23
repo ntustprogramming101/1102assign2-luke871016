@@ -14,7 +14,7 @@ PImage groundhogIdleImg,groundhogDownImg,groundhogLeftImg,groundhogRightImg;
 PImage startNormalImg,startHoveredImg,restartNormalImg,restartHoveredImg;
 int gameState = GAME_START;
 int lifeCount = 2;
-int movingFrame = 15;
+int movingFrame = 16;
 int groundhogState = HOG_IDLE;
 boolean movingDetection;
 void setup() {
@@ -52,6 +52,7 @@ void setup() {
 }
 
 void draw() {
+  println(groundhogPosition.y);
   // Switch Game State
   switch(gameState){
     case GAME_START:
@@ -88,26 +89,26 @@ void draw() {
       // soil
       image(soilImg,0,160);
       // groundhog moving detection
-      if(movingFrame==15){
+      if(movingFrame==16){
         movingDetection = false;
         groundhogState = HOG_IDLE;
       }else{
         movingDetection = true;
       }
       // groundhog move
-      if(movingFrame < 15){
+      if(movingFrame < 16){
         switch(groundhogState){
           case HOG_LEFT:
             movingFrame += 1;
-            groundhogPosition.x-=80.0/15.0;
+            groundhogPosition.x-=80.0/16.0;
             break;
           case HOG_DOWN:
             movingFrame += 1;
-            groundhogPosition.y+=80.0/15.0;
+            groundhogPosition.y+=80.0/16.0;
             break;
           case HOG_RIGHT:
             movingFrame += 1;
-            groundhogPosition.x+=80.0/15.0;
+            groundhogPosition.x+=80.0/16.0;
             break;
         }
       }
@@ -132,7 +133,7 @@ void draw() {
          groundhogPosition.y < soldierPosition.y + 80.0 &&
          groundhogPosition.y + 80.0 > soldierPosition.y){
         groundhogPosition = new PVector(80*5,80);
-        movingFrame = 15;
+        movingFrame = 16;
         lifeCount --;
         if(lifeCount == 0){
           gameState = GAME_LOSE;
@@ -205,7 +206,7 @@ void keyPressed(){
     //debug
       lifeCount = 5;
       groundhogPosition = new PVector(80.0*5,80.0);
-      movingFrame = 15;
+      movingFrame = 16;
       break;
   }
 }
