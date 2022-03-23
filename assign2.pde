@@ -52,6 +52,7 @@ void setup() {
 }
 
 void draw() {
+  println(groundhogPosition.x);
   // Switch Game State
   switch(gameState){
     case GAME_START:
@@ -91,8 +92,6 @@ void draw() {
       if(movingFrame==15){
         movingDetection = false;
         groundhogState = HOG_IDLE;
-        groundhogPosition.x = round(groundhogPosition.x);
-        groundhogPosition.y = round(groundhogPosition.y);
       }else{
         movingDetection = true;
       }
@@ -102,42 +101,20 @@ void draw() {
           case HOG_LEFT:
             movingFrame += 1;
             groundhogPosition.x-=80.0/15.0;
-            // groundhog moving detection
-            if(movingFrame==15){
-              movingDetection = false;
-              groundhogState = HOG_IDLE;
-              groundhogPosition.x = round(groundhogPosition.x);
-              groundhogPosition.y = round(groundhogPosition.y);
-            }else{
-              movingDetection = true;
-            }
             break;
           case HOG_DOWN:
             movingFrame += 1;
             groundhogPosition.y+=80.0/15.0;
-            // groundhog moving detection
-            if(movingFrame==15){
-              movingDetection = false;
-              groundhogState = HOG_IDLE;
-              groundhogPosition.x = round(groundhogPosition.x);
-              groundhogPosition.y = round(groundhogPosition.y);
-            }else{
-              movingDetection = true;
-            }
             break;
           case HOG_RIGHT:
             movingFrame += 1;
             groundhogPosition.x+=80.0/15.0;
-            // groundhog moving detection
-            if(movingFrame==15){
-              movingDetection = false;
-              groundhogState = HOG_IDLE;
-              groundhogPosition.x = round(groundhogPosition.x);
-              groundhogPosition.y = round(groundhogPosition.y);
-            }else{
-              movingDetection = true;
-            }
             break;
+        }
+        // position fix
+        if(movingFrame == 15){
+          groundhogPosition.x = round(groundhogPosition.x);
+          groundhogPosition.y = round(groundhogPosition.y);
         }
       }
       // groundhog show
