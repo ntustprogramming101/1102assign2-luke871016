@@ -43,7 +43,7 @@ void setup() {
   soldierPosition = new PVector(random(width),160+soldierLayer*80);
   
   // groundhog position
-  groundhogPosition = new PVector(80*5,80);
+  groundhogPosition = new PVector(320,80);
   
   // cabbage position
   int cabbageIndexX = int(random(0,8));
@@ -136,7 +136,7 @@ void draw() {
          groundhogPosition.x + 80 > soldierPosition.x &&
          groundhogPosition.y < soldierPosition.y + 80 &&
          groundhogPosition.y + 80 > soldierPosition.y){
-        groundhogPosition = new PVector(80*5,80);
+        groundhogPosition = new PVector(320,80);
         movingFrame = 15;
         lifeCount --;
         if(lifeCount == 0){
@@ -173,7 +173,7 @@ void draw() {
           soldierPosition = new PVector(random(width),160+soldierLayer*80);
           gameState = GAME_RUN;
           // groundhog position
-          groundhogPosition = new PVector(80*5,80);
+          groundhogPosition = new PVector(320,80);
           // cabbage position
           int cabbageIndexX = int(random(0,8));
           int cabbageIndexY = int(random(0,4));
